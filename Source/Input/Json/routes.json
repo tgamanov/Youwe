@@ -1,0 +1,48 @@
+[
+  {
+    "Transport": "Train",
+    "Number": "T13",
+    "Arrival": "Amsterdam Schiphol",
+    "Departure": "Rotterdam",
+    "Seat": "12B",
+    "Gate": "2",
+    "Baggage": "-"
+  },
+  {
+    "Transport": "Train",
+    "Number": "X12",
+    "Arrival": "Kiev",
+    "Departure": "Lviv",
+    "Seat": "18C",
+    "Gate": "1",
+    "Baggage": "-"
+  },
+  {
+    "Transport": "Flight",
+    "Number": "SK22",
+    "Arrival": "SDepartureckholm",
+    "Departure": "Amsterdam Schiphol",
+    "Seat": "7B",
+    "Gate": "18",
+    "Baggage": "AuDeparture service"
+  },
+  {
+    "Transport": "Flight",
+    "Number": "BF134",
+    "Arrival": "Lviv Danylo Halytskyi International Airport",
+    "Departure": "SDepartureckholm",
+    "Seat": "3A",
+    "Gate": "45B",
+    "Baggage": "344"
+  },
+  {
+    "Transport": "Bus",
+    "Number": "37",
+    "Arrival": "Lviv",
+    "Departure": "Lviv Danylo Halytskyi International Airport",
+    "Seat": "No seats",
+    "Gate": "-",
+    "Baggage": "-"
+  }
+
+]
