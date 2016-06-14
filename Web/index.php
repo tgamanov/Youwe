@@ -2,18 +2,19 @@
 require_once __DIR__ . '/../vendor/autoload.php';//Composer autoload
 
 use Libs\JsonSorterClass;
+use Libs\JsonContentManagerClass;
 
 $make_route = new JsonSorterClass();
 $make_route->FindStartingPoint();//load file, convert it to a string and find 1st boarding pass
 $make_route->FinfRelatedBoardingPasses($make_route->getFirstBoardingPass(), $make_route->data);//create array with route keys
 $make_route->CreateRoute();//convert set of the boarding passes with correct order
 
-use Libs\JsonContentManagerClass;
-
-$save_route = new JsonContentManagerClass();// Convert ordered set back to Json format
+$save_route = new JsonContentManagerClass();
+$save_route->ConvertSortedBack($make_route->output);// Convert ordered set back to Json format
 $save_route->SaveRoute();//save it to a disk
-//Display created route for the Customer
-echo '
+?>
+
+<!--Display created route for the Customer-->
 <!doctype html>
 <html>
 <head>
@@ -39,30 +40,29 @@ echo '
         }
     </style>
 <body>
-<h3>Dear Customer, this route has been created for you according your boarding passes. Please follow it to reach your final destination.</h3>
-    <table>
-        <tr>
-            <th>Type of transport</th>
-            <th>Transport number</th>
-            <th>From</th>
-            <th>To</th>
-            <th>Seat assignment</th>
-            <th>Gate</th>
-            <th>Baggage drop</th>
-        </tr>
-         <tr>
-';
+<h3>Dear Customer, this route has been created for you according your boarding passes. Please follow it to reach your
+    final destination.</h3>
+<table>
+    <tr>
+        <th>Type of transport</th>
+        <th>Transport number</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Seat assignment</th>
+        <th>Gate</th>
+        <th>Baggage drop</th>
+    </tr>
+    <tr>
+        
+        <?php
+        foreach ($make_route->getOutput() as $val) {
+            foreach ($val as $key) {
+                echo '<td>' . $key . '</td>';
+            }
+            echo '</tr>';
+        };
+        ?>
 
-foreach ($make_route->getOutput() as $val) {
-    foreach ($val as $key) {
-        echo "    
-            <td>$key</td>
-                        ";
-    }
-    echo '</tr>';
-};
-echo '
 </table>
-</form>
 </body>
-</html>';
+</html>'
